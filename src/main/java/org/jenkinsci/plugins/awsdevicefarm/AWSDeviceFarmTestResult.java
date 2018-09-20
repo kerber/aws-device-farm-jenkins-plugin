@@ -97,10 +97,10 @@ public class AWSDeviceFarmTestResult extends TestResult {
     static {
         resultMap.put(ExecutionResult.PASSED, Result.SUCCESS);
         resultMap.put(ExecutionResult.WARNED, Result.UNSTABLE);
-        resultMap.put(ExecutionResult.FAILED, Result.FAILURE);
+        resultMap.put(ExecutionResult.FAILED, Result.UNSTABLE);
         resultMap.put(ExecutionResult.SKIPPED, Result.FAILURE);
         resultMap.put(ExecutionResult.ERRORED, Result.FAILURE);
-        resultMap.put(ExecutionResult.STOPPED, Result.FAILURE);
+        resultMap.put(ExecutionResult.STOPPED, Result.ABORTED);
     }
 
     /**
