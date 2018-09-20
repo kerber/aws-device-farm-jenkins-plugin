@@ -36,7 +36,6 @@ import java.io.PrintStream;
 public class AWSDeviceFarmTestResultAction extends AbstractTestResultAction<AWSDeviceFarmTestResultAction> implements StaplerProxy {
 
     private static final int DefaultUpdateInterval = 30 * 1000;
-    private PrintStream log;
     private AWSDeviceFarmTestResult result;
 
     public AWSDeviceFarmTestResultAction(AbstractBuild<?, ?> owner, AWSDeviceFarmTestResult result) {
@@ -47,7 +46,6 @@ public class AWSDeviceFarmTestResultAction extends AbstractTestResultAction<AWSD
     public AWSDeviceFarmTestResultAction(hudson.model.Run<?, ?> owner, AWSDeviceFarmTestResult result, PrintStream log) {
         super();
         onAttached(owner);
-        this.log = log;
         this.result = result;
     }
 
@@ -87,6 +85,7 @@ public class AWSDeviceFarmTestResultAction extends AbstractTestResultAction<AWSD
             result = new AWSDeviceFarmTestResult(owner, run);
             writeToLog(log, String.format("Run %s status %s", run.getName(), run.getStatus()));
             if (result.isCompleted()) {
+                //TODO: Insert additional info into result
                 break;
             }
             try {
